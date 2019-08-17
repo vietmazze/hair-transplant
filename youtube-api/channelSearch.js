@@ -1,5 +1,6 @@
 const axios = require("axios");
-const key = "AIzaSyDDFCMawWdgC2E8EDyVOpcCRLeSvKElC0U";
+const config = require("config");
+const youtubekey = config.get("youtubekey");
 const type = require("./channelId");
 
 const channelSearch = async () => {
@@ -10,7 +11,7 @@ const channelSearch = async () => {
         params: {
           part: "statistics",
           id: type.toString(),
-          key: key,
+          key: youtubekey,
           maxResults: 50
         }
       }
@@ -23,4 +24,4 @@ const channelSearch = async () => {
   }
 };
 
-channelSearch();
+module.exports = channelSearch;

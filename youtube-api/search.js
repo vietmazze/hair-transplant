@@ -1,5 +1,6 @@
 const axios = require("axios");
-const key = "AIzaSyDDFCMawWdgC2E8EDyVOpcCRLeSvKElC0U";
+const config = require("config");
+const youtubekey = config.get("youtubekey");
 
 const search = async () => {
   try {
@@ -12,7 +13,7 @@ const search = async () => {
           order: "viewCount",
           q: "hair transplant",
           type: "channel",
-          key: key
+          key: youtubekey
         }
       }
     );
@@ -25,4 +26,4 @@ const search = async () => {
   }
 };
 
-search();
+module.exports = search;
