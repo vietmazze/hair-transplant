@@ -1,9 +1,11 @@
 const express = require("express");
 const db = require("./config/db");
+const search = require("./youtube-api/search");
 
 const app = express();
 
 db();
+search();
 // init Middleware
 app.use(express.json({ extended: false }));
 
