@@ -1,13 +1,18 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Youtubers = require("../models/Youtubers");
-const { check, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const config = require("config");
-const jwt = require("jsonwebtoken");
-const secret = config.get("jwtSecret");
+const Youtubers = require('../models/Youtubers');
+const { check, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const config = require('config');
+const jwt = require('jsonwebtoken');
+const secret = config.get('jwtSecret');
 
-router.post("/", async (req, res) => {
+router.get('/', async (req, res) => {
+  const contact = await Youtubers.find({});
+  res.json(contact);
+});
+
+router.post('/', async (req, res) => {
   const {
     channelID,
     name,
@@ -30,7 +35,7 @@ router.post("/", async (req, res) => {
     await youtuber.save();
     res.status(200).json({ msg: youtuber });
   } catch (err) {
-    res.status(500).send("Server error");
+    res.status(500).send('Server error');
   }
 });
 
