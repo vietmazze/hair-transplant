@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const secret = config.get('jwtSecret');
 
 router.get('/', async (req, res) => {
-  const contact = await Youtubers.find({});
+  const contact = await Youtubers.find({}).select('-__v');
   res.json(contact);
 });
 
