@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import YoutuberItem from './YoutuberItem';
 
 const Youtubers = () => {
 	const [youtubers, setYoutubers] = useState([]);
@@ -26,7 +27,9 @@ const Youtubers = () => {
 			{!loading && youtubers.length === 0 ? (
 				<p> No youtubers to show...</p>
 			) : (
-				youtubers.map(youtuber => <li> {youtuber.name}</li>)
+				youtubers.map(youtuber => (
+					<YoutuberItem key={youtuber._id} youtuber={youtuber} />
+				))
 			)}
 		</div>
 	);

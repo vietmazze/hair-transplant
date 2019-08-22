@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Youtubers from './components/youtubers/Youtubers';
+import Navbar from './components/layout/Navbar';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -12,9 +14,16 @@ const App = () => {
 	});
 
 	return (
-		<Fragment>
-			<Youtubers />
-		</Fragment>
+		<Router>
+			<Fragment>
+				<Navbar />
+				<div>
+					<Switch>
+						<Route exact path='/' component={Youtubers} />
+					</Switch>
+				</div>
+			</Fragment>
+		</Router>
 	);
 };
 
